@@ -67,6 +67,12 @@ public class DiceTest {
             }
         }
 
+        printWinningChance(testRuns, winCount);
+
+        assertThat(winCount, is(greaterThan(testRuns / 2)));
+    }
+
+    private void printWinningChance(int testRuns, int winCount) {
         System.out.println(
                 String.format(
                         "winCount at %s runs is %s -> winning chance = %s %%",
@@ -74,7 +80,5 @@ public class DiceTest {
                         winCount,
                         1.0f * winCount / testRuns)
         );
-
-        assertThat(winCount, is(greaterThan(testRuns / 2)));
     }
 }
