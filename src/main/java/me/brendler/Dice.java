@@ -1,5 +1,7 @@
 package me.brendler;
 
+import java.util.Random;
+
 /**
  * Created on 28.10.2016.
  */
@@ -15,7 +17,7 @@ public class Dice {
     }
 
     private static int throwDice() {
-        return 1;
+        return 1 + new Random().nextInt(6);
     }
 
     private static float calculatePayback(int sum, float input) {
