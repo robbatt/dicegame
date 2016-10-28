@@ -1,6 +1,5 @@
 package me.brendler;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -70,6 +69,29 @@ public class DiceTest {
         assertThat(winCount, is(greaterThan(testRuns / 2)));
     }
 
+    @Test
+    public void checkWinningChanceNoBudgetBelow0() throws Exception {
+        int testRuns = 1000;
+        int playedRounds = 0;
+        double budget = 0.50;
+
+        for (int i = 0; i < 1000; i++) {
+            float payback = Dice.play(INPUT);
+            budget += payback;
+
+            if(budget < INPUT) {
+                System.out.println("Budget fell below required input for next round");
+                break;
+            }
+
+            playedRounds++;
+        }
+
+        printRoundsPlayed(testRuns, playedRounds, budget);
+
+        assertThat(playedRounds, is(greaterThan(testRuns / 2)));
+    }
+
     private void printWinningChance(int testRuns, int winCount) {
         System.out.println(
                 String.format(
@@ -77,6 +99,16 @@ public class DiceTest {
                         testRuns,
                         winCount,
                         1.0f * winCount / testRuns)
+        );
+    }
+
+    private void printRoundsPlayed(int testRuns, int roundsPlayed, double finalBudget) {
+        System.out.println(
+                String.format(
+                        "played rounds in %s runs is %s -> final budget is = %s ",
+                        testRuns,
+                        roundsPlayed,
+                        finalBudget)
         );
     }
 }
