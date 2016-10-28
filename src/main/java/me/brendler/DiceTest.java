@@ -17,9 +17,8 @@ public class DiceTest {
     @Test
     public void playGame() throws Exception {
         float budget = INITIAL_BUDGET;
-        float input = INPUT;
 
-        budget += Dice.play(input);
+        budget += Dice.play(INPUT);
 
         assertThat(budget, is(both(greaterThanOrEqualTo(0.0f)).and(lessThanOrEqualTo(2.00f))));
     }
@@ -53,5 +52,29 @@ public class DiceTest {
     @Test
     public void calculatePaybackReturns4xInput() throws Exception {
         assertThat(Dice.calculatePayback(12, INPUT), is(4 * INPUT));
+    }
+
+    @Test
+    public void checkWinningChanceAbove50Percent() throws Exception {
+        int testRuns = 1000;
+        int winCount = 0;
+
+        for (int i = 0; i < 1000; i++) {
+            float payback = Dice.play(INPUT);
+
+            if(payback >= INPUT) {
+                winCount++;
+            }
+        }
+
+        System.out.println(
+                String.format(
+                        "winCount at %s runs is %s -> winning chance = %s %%",
+                        testRuns,
+                        winCount,
+                        1.0f * winCount / testRuns)
+        );
+
+        assertThat(winCount, is(greaterThan(testRuns / 2)));
     }
 }
