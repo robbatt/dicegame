@@ -12,15 +12,13 @@ import static org.hamcrest.Matchers.*;
 public class DiceTest {
 
     private static float INPUT = 0.50f;
-    private static float INITIAL_BUDGET = 0.50f;
 
     @Test
     public void playGame() throws Exception {
-        float budget = INITIAL_BUDGET;
+        float payback = Dice.play(INPUT);
 
-        budget += Dice.play(INPUT);
-
-        assertThat(budget, is(both(greaterThanOrEqualTo(0.0f)).and(lessThanOrEqualTo(2.00f))));
+        assertThat(payback, is(greaterThanOrEqualTo(0 * INPUT)));
+        assertThat(payback, is(lessThanOrEqualTo(4 * INPUT)));
     }
 
     @Test
