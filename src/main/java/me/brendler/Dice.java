@@ -20,7 +20,7 @@ public class Dice {
         return 1 + new Random().nextInt(6);
     }
 
-    private static float calculatePayback(int sum, float input) {
+    static float calculatePayback(int sum, float input) {
         return 0;
     }
 
