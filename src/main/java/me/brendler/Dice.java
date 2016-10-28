@@ -1,11 +1,14 @@
 package me.brendler;
 
+import java.util.Map;
 import java.util.Random;
 
 /**
  * Created on 28.10.2016.
  */
 public class Dice {
+
+    private static PaybackMultiplierMap paybackMultiplierMap = new PaybackMultiplierMap();
 
     public static float play(float input) {
 
@@ -21,7 +24,8 @@ public class Dice {
     }
 
     static float calculatePayback(int sum, float input) {
-        return 0;
+        return paybackMultiplierMap.get(sum) * input;
     }
+
 
 }

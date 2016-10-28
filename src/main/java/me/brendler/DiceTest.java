@@ -34,7 +34,6 @@ public class DiceTest {
     }
 
     @Test
-    @Ignore
     public void calculatePaybackReturns1xInput() throws Exception {
         assertThat(Dice.calculatePayback(7, INPUT), is(1 * INPUT));
         assertThat(Dice.calculatePayback(8, INPUT), is(1 * INPUT));
@@ -42,19 +41,16 @@ public class DiceTest {
     }
 
     @Test
-    @Ignore
     public void calculatePaybackReturns2xInput() throws Exception {
         assertThat(Dice.calculatePayback(10, INPUT), is(2 * INPUT));
     }
 
     @Test
-    @Ignore
     public void calculatePaybackReturns3xInput() throws Exception {
         assertThat(Dice.calculatePayback(11, INPUT), is(3 * INPUT));
     }
 
     @Test
-    @Ignore
     public void calculatePaybackReturns4xInput() throws Exception {
         assertThat(Dice.calculatePayback(12, INPUT), is(4 * INPUT));
     }
